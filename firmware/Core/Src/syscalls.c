@@ -1,0 +1,49 @@
+/**
+ ******************************************************************************
+ * @file    syscalls.c
+ * @brief   Minimal newlib syscall stubs so printf/snprintf-family functions
+ *          link correctly for a bare-metal target (no OS, no filesystem).
+ * @project Smart-Parking-Assistance-System
+ ******************************************************************************
+ */
+
+#include <sys/stat.h>
+#include <errno.h>
+#include <stdint.h>
+#include <unistd.h>
+
+extern int __io_putchar(int ch) __attribute__((weak));
+extern int __io_getchar(void) __attribute__((weak));
+
+__attribute__((weak)) int _write(int file, char *ptr, int len)
+{
+    (void)file;
+    for (int i = 0; i < len; i++)
+    {
+        if (__io_putchar)
+        {
+            __io_putchar((int)ptr[i]);
+        }
+    }
+    return len;
+}
+
+__attribute__((weak)) int _read(int file, char *ptr, int len)
+{
+    (void)file;
+    int ch = __io_getchar ? __io_getchar() : -1;
+    if (ch >= 0 && len > 0)
+    {
+        *ptr = (char)ch;
+        return 1;
+    }
+    return 0;
+}
+
+int _close(int file) { (void)file; return -1; }
+int _fstat(int file, struct stat *st) { (void)file; st->st_mode = S_IFCHR; return 0; }
+int _isatty(int file) { (void)file; return 1; }
+int _lseek(int file, int ptr, int dir) { (void)file; (void)ptr; (void)dir; return 0; }
+int _getpid(void) { return 1; }
+int _kill(int pid, int sig) { (void)pid; (void)sig; errno = EINVAL; return -1; }
+void _exit(int status) { (void)status; while (1) { } }
