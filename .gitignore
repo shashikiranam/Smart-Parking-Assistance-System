@@ -1,0 +1,35 @@
+# ===== STM32CubeIDE / Eclipse CDT build outputs =====
+Debug/
+Release/
+**/Debug/
+**/Release/
+*.o
+*.d
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+*.su
+
+# STM32CubeIDE workspace/metadata (machine-specific, not project config)
+.metadata/
+.settings/
+*.launch
+
+# STM32CubeMX generated driver tree (regenerated from cube_mx/*.ioc, see
+# firmware/Drivers/README.md — intentionally not committed)
+firmware/Drivers/STM32G0xx_HAL_Driver/
+firmware/Drivers/CMSIS/
+
+# ===== OS / editor cruft =====
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/
+
+# ===== Misc =====
+*.log
+*.tmp

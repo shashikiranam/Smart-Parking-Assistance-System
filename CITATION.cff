@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this firmware or its architecture as a reference, please cite it as below."
+title: "Smart Parking Assistance System"
+version: 1.0.0
+date-released: 2026-07-11
+type: software
+authors:
+  - name: "Smart Parking Assistance System Contributors"
+repository-code: "https://github.com/your-username/Smart-Parking-Assistance-System"
+license: MIT
+keywords:
+  - embedded-systems
+  - stm32
+  - automotive-electronics
+  - firmware
+  - ultrasonic-sensor
+  - parking-assistance
+  - finite-state-machine
+abstract: >
+  An original, educational STM32 firmware project implementing a
+  four-corner ultrasonic parking assistance system for the NUCLEO-G071RB,
+  featuring a finite state machine, sensor filtering, a distance-based
+  decision engine, servo-driven scanning, LCD status display, progressive
+  buzzer warnings, and UART telemetry.
